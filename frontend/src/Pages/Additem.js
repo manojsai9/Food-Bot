@@ -29,7 +29,7 @@ const Additem = () => {
         formData.append(key, data[key]);
       }
   
-      axios.post("http://localhost:5000/auth/additem", formData, {
+      axios.post(`${process.env.REACT_APP_API_URL}/auth/additem`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {
