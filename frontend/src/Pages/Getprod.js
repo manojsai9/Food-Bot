@@ -14,7 +14,7 @@ const Getprod = () => {
   const location = useLocation();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/getprod").then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/getprod`).then((res) => {
       setProd(res.data);
     });
   }, [f]);
@@ -30,7 +30,7 @@ const Getprod = () => {
   let addcart = (prodobj) => {
     axios
       .post(
-        "http://localhost:5000/api/addcart",
+        `${process.env.REACT_APP_API_URL}/api/addcart`,
         {
           uid: obj.state._id,
           pid: prodobj._id,
@@ -70,7 +70,7 @@ const Getprod = () => {
 
   let del = (pid) => {
     axios
-      .delete(`http://localhost:5000/delprod/${pid}`, {
+      .delete(`${process.env.REACT_APP_API_URL}/delprod/${pid}`, {
         headers: { Authorization: obj.state.token, uid: obj.state._id },
       })
       .then((res) => {
@@ -106,7 +106,7 @@ const Getprod = () => {
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <div key={product.id} className="restaurant-card">
-              <img src={`http://localhost:5000/prdimg/${product.pimg}`} alt="product" />
+              <img src={`${process.env.REACT_APP_API_URL}/prdimg/${product.pimg}`} alt="product" />
               <h5>{product.name}</h5>
               <div id="1">Category: {product.cat}</div>
               <div id="2">Price: ₹{product.price}</div>
