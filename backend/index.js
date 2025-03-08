@@ -25,7 +25,13 @@ mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/fddb")
 const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_URL, "http://localhost:3000"], // Allow frontend URL & localhost
+    credentials: true,
+  })
+);
+
 app.put("/auth/updateOrderStatus", async (req, res) => {
   try {
       const { orderId, newStatus } = req.body;
