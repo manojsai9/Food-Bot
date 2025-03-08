@@ -12,9 +12,7 @@ const Home = () => {
   const handleCategoryClick = (category) => {
     navigate(`/api/getprod?search=${encodeURIComponent(category)}`);
   };
-  
   let obj=useContext(Ct)
-
   useEffect(()=>{
     axios.get(`${process.env.REACT_APP_API_URL}/api/getrest`).then((res)=>{
       setRest(res.data)
@@ -80,7 +78,7 @@ const Home = () => {
         {filteredRestaurants.length > 0 ? (
           filteredRestaurants.map((restaurant) => (
             <div key={restaurant.id} className="restaurant-card">
-              <img src={`${process.env.REACT_APP_API_URL}/resimg/${restaurant.rimg}`} alt="Product Image"/>
+              <img src={`${process.env.REACT_APP_API_URL}/resimg/${restaurant.rimg}`} alt="pro"/>
               <h5><b>{restaurant.name}</b></h5>
               <p>Location: {restaurant.location}</p>
             </div>

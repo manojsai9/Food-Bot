@@ -10,14 +10,13 @@ const Getprod = () => {
   let [searchTerm, setSearchTerm] = useState("");
   let navigate = useNavigate();
   let obj = useContext(Ct);
-  let [f, setF] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/api/getprod`).then((res) => {
       setProd(res.data);
     });
-  }, [f]);
+  }, []);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -41,25 +40,14 @@ const Getprod = () => {
         },
         { headers: { Authorization: obj.state.token } }
       )
-      .then((res) => {
-        toast.success("Item added to cart!", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "colored",
-        });
+      .then(() => {
+        toast.success("Item added to cart!");
         setTimeout(() => {
-            navigate("/api/getprod");
-        }, 2100); 
+          navigate("/api/getprod");
+        }, 2100);
       })
-      .catch((error) => {
-        toast.error("Failed to add item to cart!", {
-          position: "top-right",
-          autoClose: 2000,
-        });
+      .catch(() => {
+        toast.error("Failed to add item to cart!");
       });
   };
 
@@ -74,12 +62,9 @@ const Getprod = () => {
 
   return (
     <div className="home">
-      {/* Toast Container */}
       <ToastContainer />
-
       <div className="search-container">
         <input
-          id="1"
           type="text"
           placeholder="Search for Food..."
           value={searchTerm}
@@ -87,24 +72,18 @@ const Getprod = () => {
           className="search-input"
         />
       </div>
-
       <div className="restaurant-list">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <div key={product.id} className="restaurant-card">
               <img src={`${process.env.REACT_APP_API_URL}/prdimg/${product.pimg}`} alt="product" />
               <h5>{product.name}</h5>
-              <div id="1">Category: {product.cat}</div>
-              <div id="2">Price: ₹{product.price}</div>
-              <div id="3">Rating: {product.rating}</div>
+              <p>Category: {product.cat}</p>
+              <p>Price: ₹{product.price}</p>
               {obj.state.token !== "" && (
-                <div id="addcart">
-                  <button onClick={() => addcart(product)}>Add to Cart</button>
-                </div>
+                <button onClick={() => addcart(product)}>Add to Cart</button>
               )}
-              <div id="knowmore">
-                <button onClick={() => knowmore(product)}>Know more</button>
-              </div>
+              <button onClick={() => knowmore(product)}>Know more</button>
             </div>
           ))
         ) : (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import Ct from "../Pages/Ct";
 
@@ -6,7 +6,7 @@ const RNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   let obj=useContext(Ct)
 
-  const words = ["Food Delivery Website", "Restaurant Partner"];
+  const words = useMemo(() => ["Food Delivery Website", "Restaurant Partner"], []);
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
