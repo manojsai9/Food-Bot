@@ -11,7 +11,7 @@ const Orders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/uorder/${userId}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/uorder/${userId}`);
                 if (!Array.isArray(response.data)) {
                     throw new Error("Invalid response format");
                 }
