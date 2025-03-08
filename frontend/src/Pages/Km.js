@@ -22,7 +22,7 @@ const Km = () => {
   let addComment = () => {
     axios
       .put(
-        "http://localhost:5000/api/addcom",
+        `${process.env.REACT_APP_API_URL}/api/addcom`,
         { ...rv, name: obj.state.name, _id: prodobj._id },
         { headers: { Authorization: obj.state.token } }
       )
@@ -32,7 +32,7 @@ const Km = () => {
       });
   };
   let addcart = (prodobj) => {   
-    axios.post("http://localhost:5000/api/addcart",
+    axios.post(`${process.env.REACT_APP_API_URL}/api/addcart`,
       {
         uid: obj.state._id,
         pid: prodobj._id,
@@ -74,7 +74,7 @@ const Km = () => {
           {/* Left side - Image */}
           <div className="km-img-container">
             <img
-              src={`http://localhost:5000/prdimg/${prodobj.pimg}`}
+              src={``${process.env.REACT_APP_API_URL}/prdimg/${prodobj.pimg}`}
               className="km-product-img"
               alt={prodobj.name}
             />
