@@ -31,7 +31,7 @@ const R_reg = () => {
       }
   
       axios
-        .post("http://localhost:5000/auth/rreg", formData, {
+        .post(`${process.env.REACT_APP_API_URL}/auth/rreg`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {
