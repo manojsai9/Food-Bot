@@ -74,7 +74,7 @@ const Km = () => {
           {/* Left side - Image */}
           <div className="km-img-container">
             <img
-              src={``${process.env.REACT_APP_API_URL}/prdimg/${prodobj.pimg}`}
+              src={`${process.env.REACT_APP_API_URL}/prdimg/${prodobj.pimg}`}
               className="km-product-img"
               alt={prodobj.name}
             />

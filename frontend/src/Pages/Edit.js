@@ -39,7 +39,7 @@ const Edit = () => {
     fd.append("_id", prod._id);
     fd.append("oldimg", prod.pimg);
     axios
-      .put(`${process.env.REACT_APP_API_URL}`/auth/editimg, fd, {
+      .put(`${process.env.REACT_APP_API_URL}/auth/editimg`, fd, {
         headers: { Authorization: obj.state.token, uid: obj.state._id },
       })
       .then(() => {
