@@ -5,7 +5,7 @@ import banner from "../images/r_login.jpg";
 import TextField from '@mui/material/TextField';
 import Ct from "./Ct";
 
-const R_login = () => {
+const RLogin = () => {
   let [data, setData] = useState({ _id: "", pwd: "" });
   let [msg, setMsg] = useState("");
   const navigate = useNavigate(); 
@@ -73,4 +73,4 @@ const R_login = () => {
   );
 };
 
-export default R_login;
+export default RLogin;

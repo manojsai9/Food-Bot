@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Ct from './Ct'
 
-const R_logout = () => {
+const RLogout = () => {
     let obj=useContext(Ct)
     let navigate=useNavigate()
     useEffect(()=>{
@@ -13,4 +13,4 @@ const R_logout = () => {
     <div>Logout</div>
   )
 }
-export default R_logout
+export default RLogout

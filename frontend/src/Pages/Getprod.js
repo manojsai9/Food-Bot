@@ -68,20 +68,6 @@ const Getprod = () => {
     navigate("/km");
   };
 
-  let del = (pid) => {
-    axios
-      .delete(`${process.env.REACT_APP_API_URL}/delprod/${pid}`, {
-        headers: { Authorization: obj.state.token, uid: obj.state._id },
-      })
-      .then((res) => {
-        setF(!f);
-        toast.success("Product deleted!", { autoClose: 1500 });
-      })
-      .catch(() => {
-        toast.error("Failed to delete product.");
-      });
-  };
-
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import Ct from "../Pages/Ct";
 
-const R_navbar = () => {
+const RNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   let obj=useContext(Ct)
 
@@ -57,4 +57,4 @@ const R_navbar = () => {
   );
 };
 
-export default R_navbar;
+export default RNavbar;

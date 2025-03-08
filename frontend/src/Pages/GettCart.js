@@ -11,7 +11,6 @@ const GettCart = () => {
   const obj = useContext(Ct);
   const navigate = useNavigate();
   const [refresh, setRefresh] = useState(false);
-  const restaurantId = cart.length > 0 ? cart[0].restaurantId : null;
 
   useEffect(() => {
     if (!obj.state?._id) {
@@ -31,31 +30,7 @@ const GettCart = () => {
         setCtotal(total);
       })
       .catch((err) => console.error("Error fetching cart:", err));
-  }, [obj.state._id, refresh]);
-
-  const updateCart = () => setRefresh((prev) => !prev);
-
-  const modifyQuantity = (cid, qty, action) => {
-    if (action === "decrease" && qty === 1) {
-      deleteItem(cid);
-      return;
-    }
-
-    const endpoint = action === "increase" ? "inc" : "dec";
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/api/${endpoint}/${cid}`, {
-        headers: { Authorization: obj.state.token },
-      })
-      .then(updateCart);
-  };
-
-  const deleteItem = (cid) => {
-    axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/del/${cid}`, {
-        headers: { Authorization: obj.state.token },
-      })
-      .then(updateCart);
-  };
+  }, [obj.state._id, refresh, navigate, obj]);
 
   return (
     <div className="cart-container">
@@ -63,39 +38,8 @@ const GettCart = () => {
         <div>Your cart is empty</div>
       ) : (
         <div className="cart-content">
-          <div className="cart-items">
-            {cart.map((prod) => (
-              <div className="cart-row" key={prod._id}>
-                <img
-                  src={`${process.env.REACT_APP_API_URL}/prdimg/${prod.pimg}`}
-                  alt={prod.name}
-                  className="cart-img"
-                />
-                <div className="cart-details">
-                  <h5 className="cart-title">{prod.name.toUpperCase()}</h5>
-                  <p>Price: ₹{prod.price}</p>
-                  <div className="item-row">
-                    <button onClick={() => modifyQuantity(prod._id, prod.qty, "decrease")}>-</button>
-                    {prod.qty}
-                    <button onClick={() => modifyQuantity(prod._id, prod.qty, "increase")}>+</button>
-                    <p>Total: ₹{prod.price * prod.qty}</p>
-                    <button onClick={() => deleteItem(prod._id)}>🗑</button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="checkout-section">
-            <h5>🛒 Cart Total: ₹{ctotal}</h5>
-            
-            <Checkout
-              ctotal={ctotal}
-              currentUser={obj.state}
-              cartItems={cart}
-              restaurantId={restaurantId}
-            />;
-
-          </div>
+          <h5>🛒 Cart Total: ₹{ctotal}</h5>
+          <Checkout ctotal={ctotal} currentUser={obj.state} cartItems={cart} />
         </div>
       )}
     </div>

@@ -8,11 +8,11 @@ import Reg from "./Pages/Reg";
 import "./App.css";
 import Ct from "./Pages/Ct";
 import Logout from "./Pages/Logout";
-import R_navbar from "./components/R_navbar";
-import R_login from "./Pages/R_login";
-import R_reg from "./Pages/R_reg";
-import R_orders from "./Pages/R_orders";
-import R_logout from "./Pages/R_logout";
+import RNavbar from "./components/RNavbar";
+import RLogin from "./Pages/RLogin";
+import RReg from "./Pages/RReg";
+import ROrders from "./Pages/ROrders";
+import RLogout from "./Pages/RLogout";
 import Footer from "./components/Footer";
 import Getprod from "./Pages/Getprod";
 import Additem from "./Pages/Additem";
@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
   return (
     <>
       {location.pathname.startsWith("/api") && <Navbar />}
-      {location.pathname.startsWith("/auth") && <R_navbar />}
+      {location.pathname.startsWith("/auth") && <RNavbar />}
       {children}
     </>
   );
@@ -47,10 +47,10 @@ const App = () => {
         <Route path="/" element={<Navigate to="/api/home" />} />
         <Route path="/api/home" element={<Home />} />
         <Route path="/auth/addrest" element={<AddRestaurant />} />  
-        <Route path="/auth/rlogin" element={<R_login/>}/>
-        <Route path="/auth/rlogout" element={<R_logout/>}/>
-        <Route path="/auth/rreg" element={<R_reg/>}/>
-        <Route path="/auth/rorders" element={<R_orders/>}/>
+        <Route path="/auth/rlogin" element={<RLogin/>}/>
+        <Route path="/auth/rlogout" element={<RLogout/>}/>
+        <Route path="/auth/rreg" element={<RReg/>}/>
+        <Route path="/auth/rorders" element={<ROrders/>}/>
         <Route path="/api/orders" element={<Orders/>}/>
         <Route path="/api/gettcart" element={<GettCart/>}/>
         <Route path="/api/login" element={<Login />} />

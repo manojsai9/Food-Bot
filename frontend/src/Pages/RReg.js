@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import banner from "../images/r_reg.jpg";
 import TextField from '@mui/material/TextField';
 
-const R_reg = () => {
+const RReg = () => {
   let [data,setData]=useState({"_id":"","name":"","pwd":"","pan":"","fssai":"","rimg":"","location":""})
   let [msg,setMsg]=useState("")
   let navigate=useNavigate()
@@ -138,4 +138,4 @@ const R_reg = () => {
   );
 };
 
-export default R_reg;
+export default RReg;

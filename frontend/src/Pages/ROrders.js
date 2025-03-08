@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const R_orders = () => {
+const ROrders = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -108,4 +108,4 @@ const R_orders = () => {
     );
 };
 
-export default R_orders;
+export default ROrders;
