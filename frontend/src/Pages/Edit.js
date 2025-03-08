@@ -19,7 +19,7 @@ const Edit = () => {
     let data = obj.state.proddet;
     delete data["comm"];
     setProd({ ...data });
-  }, []);
+  }, [obj.state.proddet]);
 
   let edit = () => {
     axios

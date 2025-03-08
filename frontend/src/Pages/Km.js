@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Ct from "./Ct";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import "../App.css"; // Updated CSS
@@ -12,12 +12,12 @@ const Km = () => {
   let obj = useContext(Ct);
   let [prodobj, setProd] = useState("");
   let [rv, setRv] = useState({ text: "", rt: 5 });
-  const [hover, setHover] = useState(-1);
+  const [setHover] = useState(-1);
   let navigate = useNavigate();
 
   useEffect(() => {
     setProd(obj.state.proddet);
-  }, []);
+  }, [obj.state.proddet]);
 
   let addComment = () => {
     axios
