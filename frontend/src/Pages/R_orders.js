@@ -11,7 +11,7 @@ const R_orders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/auth/restaurantorders/${restaurantId}`)
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/restaurantorders/${restaurantId}`)
                 if (!Array.isArray(response.data)) {
                     throw new Error("Invalid response format");
                 }
@@ -33,7 +33,7 @@ const R_orders = () => {
     const handleStatusChange = async (orderId, newStatus) => {
       try {
           
-          const response = await axios.put("http://localhost:5000/auth/updateOrderStatus", {
+          const response = await axios.put(`${process.env.REACT_APP_API_URL}/auth/updateOrderStatus`, {
               orderId,
               newStatus
           });
