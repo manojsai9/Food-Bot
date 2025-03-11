@@ -38,7 +38,7 @@ This is a full-stack **MERN (MongoDB, Express.js, React.js, Node.js)** food orde
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your_username/your_repo.git
+git clone https://github.com/manojsai9/Food-Bot.git
 cd your_repo
 ```
 
